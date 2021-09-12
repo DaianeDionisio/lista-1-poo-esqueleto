@@ -20,7 +20,6 @@ public class ScenePrincipal {
     private TextField textX1, textY1, textX2, textY2; //TextField para as coordenadas
     private TextField resultAngular, resultLinear; //TextField para os resultados
 
-
     public void criaScenePrincipal(Stage stage){
 
         //Criando os labels
@@ -41,6 +40,7 @@ public class ScenePrincipal {
         VBox coordenadas = new VBox(coordPonto1, coordPonto2);
 
 
+        //Locais onde aparecerão os resultados
         resultAngular = new TextField();
         resultLinear = new TextField();
         resultAngular.setEditable(false);//apenas mostrar texto
@@ -49,12 +49,14 @@ public class ScenePrincipal {
         resultLinear.setText(" ");
 
 
+        //Botão para calcular o coeficiente angular
         calcAngular = new Button("Calcular coeficiente angular");
         calcAngular.setOnAction(evento -> {
             Reta reta = criarReta();
             resultAngular.setText("Coeficiente angular: " + reta.calcAngular());
         });
 
+        //Botão para calcular o coeficiente linear
         calcLinear = new Button("Calcular coeficiente linear");
         calcLinear.setOnAction(evento -> {
             Reta reta = criarReta();
@@ -66,8 +68,9 @@ public class ScenePrincipal {
         HBox resultados = new HBox(resultAngular, resultLinear);
         VBox layoutFinal = new VBox(label1, coordenadas, botoes, resultados);//Aqui vamos agrupar verticalmente o grupo (Label + Texto) o Botao e A area que aparecer o texto digitado
 
+
         //Criamos a Scene
-        Scene scene = new Scene(layoutFinal, 400 , 300);
+        Scene scene = new Scene(layoutFinal, 400 , 200);
 
         stage.setTitle("Software Para Calculos de Álgebra Linear");
         stage.setScene(scene);
@@ -75,8 +78,10 @@ public class ScenePrincipal {
 
     }
 
+    //método para criar uma reta
     private Reta criarReta(){
 
+        //criando os pontos
         Ponto p1 = new Ponto();
         p1.setCoordX(Double.parseDouble(textX1.getText()));
         p1.setCoordY(Double.parseDouble(textY1.getText()));

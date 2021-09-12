@@ -10,12 +10,14 @@ public class Reta {
         this.p2 = p2;
     }
 
+    //método para calcular o coeficiente angular
     public double calcAngular(){
 
         return ((p2.getCoordY() - p1.getCoordY()) / (p2.getCoordX() - p1.getCoordX()));
 
     }
 
+    //método para calcular o coeficiente linear
     public double calLinear(){
 
         return ((p1.getCoordY() - calcAngular()*p1.getCoordX()));
